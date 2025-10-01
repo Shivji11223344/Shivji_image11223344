@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#667eea">
+    <title>Sri Ganesh Result Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;Sri Ganesh Result Creator&quot;,&quot;short_name&quot;:&quot;Result Creator&quot;,&quot;theme_color&quot;:&quot;#667eea&quot;,&quot;background_color&quot;:&quot;#ffffff&quot;}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Result Creator</h1>
+        </header>
+        
+        <main>
+            <div class="form-container">
+                <form id="resultForm">
+                    <div class="form-group">
+                        <label for="number">Number:</label>
+                        <input type="tel" id="number" name="number" min="1" max="100" pattern="[0-9]{1,3}" inputmode="numeric" placeholder="Enter number (1-100)" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="khelType">Khel Type:</label>
+                        <select id="khelType" name="khelType" required>
+                            <option value="">Select Khel Type</option>
+                            <option value="S">SHRI GANESH</option>
+                            <option value="M">DESHAWER</option>
+                            <option value="E">GALI</option>
+                            <option value="F">FARIDABAD</option>
+                            <option value="H">DELHI BAZAR</option>
+                            <option value="N">NEWGALI</option>
+                            <option value="T">TAJ</option>
+                            <option value="G">GAZIABAD</option>
+                            <option value="L">PUNJAB DAY</option>
+                            <option value="K">KASHIPUR</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customGame">Add New Game (Optional):</label>
+                        <input type="text" id="customGame" name="customGame" placeholder="Enter custom game name" maxlength="50">
+                    </div>
+                    
+                </form>
+            </div>
+            
+            <div class="preview-container">
+                <h3>Preview</h3>
+                <div id="resultPreview" class="result-preview">
+                    <div class="header-row">
+                        <div class="corner-logo">
+                            <img src="Corner_ganesh_logo.png" alt="Logo" class="logo-image">
+                        </div>
+                        <div class="company-name">Shri Ganesh Company</div>
+                        <div class="date-corner">
+                            <span id="currentDate"></span>
+                            <span id="currentDay"></span>
+                        </div>
+                    </div>
+                    <div class="result-content">
+                        <!-- Top Row: Ganesh Image (Left) + Result Number (Right) -->
+                        <div class="top-row">
+                            <div class="ganesh-section">
+                                <div class="god-image">
+                                    <img src="daruseth_image1.jpg" alt="Ganesh Ji" class="ganesh-img" id="mainImage">
+                                    <img src="img1.jpeg" alt="Ganesh Ji 1" class="ganesh-img" id="shriImage1" style="display: none;">
+                                    <img src="img2.jpeg" alt="Ganesh Ji 2" class="ganesh-img" id="shriImage2" style="display: none;">
+                                    <img src="img3.jpeg" alt="Ganesh Ji 3" class="ganesh-img" id="shriImage3" style="display: none;">
+                                    <img src="img4.jpeg" alt="Ganesh Ji 4" class="ganesh-img" id="shriImage4" style="display: none;">
+                                    <img src="img8.jpeg" alt="Ganesh Ji 8" class="ganesh-img" id="shriImage8" style="display: none;">
+                                    <img src="gaziabad.jpeg" alt="Gaziabad" class="ganesh-img" id="gaziabadImage" style="display: none;">
+                                    <img src="king_image.jpeg" alt="King" class="ganesh-img" id="kingImage" style="display: none;">
+                                    <img src="gali_image.jpeg" alt="Gali" class="ganesh-img" id="galiImage" style="display: none;">
+                                    <img src="new_gali_image.jpeg" alt="New Gali" class="ganesh-img" id="newGaliImage" style="display: none;">
+                                    <img src="faridabad_moon.jpg" alt="Faridabad Moon" class="ganesh-img" id="faridabadMoonImage" style="display: none;">
+                                    <img src="DELHI_BAZAR.jpg" alt="Delhi Bazar" class="ganesh-img" id="delhiBazarImage" style="display: none;">
+                                    <div class="muslim-symbol" id="muslimSymbol" style="display: none;">
+                                        <div class="crescent-moon"></div>
+                                        <div class="star"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <div class="result-number" id="previewNumber">--</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom Row: Khel English, Khel Hindi, Date with Day -->
+                        <div class="bottom-row">
+                            <div class="khel-english" id="previewKhel">--</div>
+                            <div class="khel-hindi" id="previewKhelHindi">--</div>
+                            <div class="date-info" id="previewResultDate">--</div>
+                        </div>
+                        
+                        <!-- Worship Icons -->
+                        <div class="worship-icons">
+                            <div class="icon">🌸</div>
+                            <div class="icon">💎</div>
+                            <div class="icon">🕉️</div>
+                            <div class="icon">🔔</div>
+                            <div class="icon">🪔</div>
+                            <div class="icon">🌺</div>
+                            <div class="icon">⭐</div>
+                            <div class="icon">🏺</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
